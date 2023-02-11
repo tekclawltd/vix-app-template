@@ -1,0 +1,23 @@
+service: vix-framework
+provider:
+  name: aws
+  stage: dev
+  runtime: nodejs16.x
+  memorySize: 256
+  region: eu-west-2
+  environment:
+
+custom:
+  vix:
+    dev: devdb.example.com
+
+functions:
+  vix-template-app:
+    handler: server.eventHandler
+    events:
+      - http:
+          path: / # this matches the base path
+          method: ANY
+      - http:
+          path: /{any+} # this matches any path, the token 'any' doesn't mean anything special
+          method: ANY
