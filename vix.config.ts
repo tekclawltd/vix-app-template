@@ -2,22 +2,22 @@ import { defineConfig, Extension } from '@tekclaw/vix-core';
 import dns from 'dns';
 import path from 'path';
 
-dns.setDefaultResultOrder("verbatim");
+dns.setDefaultResultOrder('verbatim');
 
 export default defineConfig({
   browserBuild: {
-    // base: '/dev',
+    base: process.env.NODE_ENV === 'production' ? '/dev' : '/',
     root: path.resolve('./src'),
     outDir: path.resolve('./dist/static'),
     publicDir: path.resolve('./public'),
     build: {
-      emptyOutDir: true
-    }
+      emptyOutDir: true,
+    },
   },
   devServer: {
     host: true,
     port: 8000,
-    entry: './build/devServer/index.ts'
+    entry: './build/devServer/index.ts',
   },
   serverBuild: {
     entry: './server/lambda.ts',
@@ -25,13 +25,15 @@ export default defineConfig({
     minify: false,
     metafile: false,
     define: {
-      'process.env.NODE_ENV': JSON.stringify('production')
-    }
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    },
   },
   plugins: [
-    Extension.copy([{
-      from: './serverless.yml',
-      to: './dist'
-    }])
-  ]
+    Extension.copy([
+      {
+        from: './serverless.yml',
+        to: './dist',
+      },
+    ]),
+  ],
 });

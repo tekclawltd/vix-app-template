@@ -6,10 +6,9 @@ provider:
   memorySize: 256
   region: eu-west-2
   environment:
-
-custom:
-  vix:
-    dev: devdb.example.com
+  apiGateway:
+    binaryMediaTypes:
+      - '*/*'
 
 functions:
   vix-template-app:

@@ -1,7 +1,11 @@
-/* eslint-disable import/no-commonjs */
-// Serves the app from the production bundle
-const mockAlb = require('./mockAlb');
 // eslint-disable-next-line import/no-unresolved
 const lambdaHandler = require('../dist/server');
+const colors = require('picocolors');
 
-mockAlb.default(lambdaHandler.eventHandler);
+lambdaHandler.setupExpressApp().then((app) => {
+  const PORT = process.env.PORT || 8000;
+
+  app.listen(PORT, () => {
+    console.log(colors.green(`\n[Mock ALB] listening on http://localhost:${PORT}\n`));
+  });
+});
