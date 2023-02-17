@@ -1,10 +1,8 @@
 global.__dirname = `${process.cwd()}/dist`;
 global.__filename = `${process.cwd()}/dist/server.js`;
 
-import eventHandler from '../../server/lambda';
-//@ts-ignore
-import mockAlb from '../mockAlb';
+import { setupExpressApp } from '../../server/lambda';
 
-const mockAlbApp = mockAlb(eventHandler);
+const mockAlbApp = setupExpressApp();
 
 export default mockAlbApp;
