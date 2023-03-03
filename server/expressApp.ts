@@ -14,6 +14,10 @@ export default async () => {
     res.send('ok');
   });
 
+  expressApp.use('/admin', (req, res) => {
+    res.send('this is admin');
+  });
+
   expressApp.use(indexRoute());
   const staticPath = path.resolve(__dirname, 'static');
   expressApp.use(express.static(staticPath));
