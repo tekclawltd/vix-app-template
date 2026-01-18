@@ -6,7 +6,7 @@
     "start": "PORT=3000 node ./build/serve.js",
     "dev": "vix",
     "build": "vix build",
-    "bootstrap_cdk": "AWS_PROFILE=vix-web-template cdk bootstrap aws://756704146364/us-east-1",
+    "bootstrap_cdk": "cdk bootstrap aws://756704146364/us-east-1",
     "preview": "vix preview",
     "deploy": "NODE_ENV=production npm run build && cdk deploy",
     "destroy": "cdk destroy",

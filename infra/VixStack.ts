@@ -25,6 +25,9 @@ export class VixStack extends cdk.Stack {
       handler: appLambda,
       proxy: true, // Proxy all requests to Lambda
       binaryMediaTypes: ['*/*'], // Matching serverless.yml
+      deployOptions: {
+        stageName: 'dev',
+      },
     });
 
     new cdk.CfnOutput(this, 'ApiUrl', {
