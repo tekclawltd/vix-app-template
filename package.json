@@ -7,8 +7,10 @@
     "dev": "vix",
     "build": "vix build",
     "preview": "vix preview",
-    "deploy": "NODE_ENV=production npm run build && cd dist && serverless deploy",
-    "destroy": "cd dist && serverless remove"
+    "deploy": "NODE_ENV=production npm run build && cdk deploy",
+    "destroy": "cdk destroy",
+    "synth": "cdk synth",
+    "diff": "cdk diff"
   },
   "dependencies": {
     "@vendia/serverless-express": "^4.12.6",
@@ -31,9 +33,12 @@
     "@types/react-dom": "^19.2.3",
     "@types/winston": "^2.4.4",
     "@types/winston-syslog": "^2.4.4",
+    "aws-cdk": "^2.1101.0",
+    "aws-cdk-lib": "^2.235.0",
+    "constructs": "^10.4.5",
     "eslint": "^9.39.2",
     "picocolors": "^1.1.1",
-    "serverless": "^4.31.0",
+    "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
   }
 }

@@ -28,12 +28,4 @@ export default defineConfig({
       'process.env.NODE_ENV': JSON.stringify('production'),
     },
   },
-  plugins: [
-    Extension.copy([
-      {
-        from: './serverless.yml',
-        to: './dist',
-      },
-    ]),
-  ],
 });
